@@ -153,7 +153,7 @@ var memelist = [
 ];
 
 bot.on("guildMemberAdd", function (member){
-	member.send("Welcome to The Server! Please Read the " + member.guild.channels.find("name","rules") + " and enjoy your stay here and don't forget to invite friends! :wink:");
+	member.send("Welcome to The Server! I am Mattify Reply, Created by Mattify#7243! You can say ?help to view all of my amazing and fun commands! More are being added! Oh, and Please Make Sure To Read the " + member.guild.channels.find("name","rules") + " and enjoy your stay here and don't forget to invite friends! :wink:");
 	let rol = member.guild.roles.find("name",defrole);
 	if(rol){
 	member.addRoles(rol);

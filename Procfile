@@ -1,1 +1,1 @@
-worker: forever start bot.js
+worker: node bot.js

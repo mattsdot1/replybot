@@ -300,7 +300,7 @@ bot.on("message", function (message)
 					embed.addField("Role Management", "Add Role => Usage:-\n?addrole @member role \n\n Remove Role => Usage:-\n?remrole @member role\n\n Set Joining Role => Usage:-\n?defrole [rolename].\n\n");
 					embed.addField("Moderation","Kick => Usage: -\n?kick @member [reason]\n\nBan => Usage: -\n?ban @member [reason]\n\nMute => Usage: -\n?mute @member [reason]\n\nUnmute => Usage: -\n?unmute @member [reason].\n\n");
 					embed.addField("Profile","Usage:- ?profile");
-			        embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
+			                embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
 					message.channel.send("I sent help in your dms! :D")
                     .then(msgs=>
                     {

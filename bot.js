@@ -207,8 +207,8 @@ bot.on("message", function (message)
             // delete from this line
             else
             {
-                message.channel.send( message.author + ", I know you love to say hi but i can't do it forever! please wait 5 seconds before saying hi again!");
-            }
+                message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
+            } );
             // to this line if u don't want to send any message when the timer hasn't cooled down
 		}
 		if(msg.startsWith("sup"))
@@ -293,7 +293,7 @@ bot.on("message", function (message)
 				
 				case "help":
 					var embed = new Discord.RichEmbed();
-					embed.setColor("YELLOW");
+					embed.setColor("RED");
 					embed.addField("Prefix", "'?'\n\n");
 					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
@@ -329,7 +329,7 @@ bot.on("message", function (message)
                         	var cot="";
                         	var a = 1;
                         	while (args[a] != null) { cot += args[a] + " "; a++; }
-							message.channel.send("" + cot + "");
+				message.channel.send("" + cot + "");
 						
 						
 

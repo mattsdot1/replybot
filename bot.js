@@ -302,10 +302,6 @@ bot.on("message", function (message)
 					embed.addField("Profile","Usage:- ?profile");
 			                embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
 					message.channel.send("I sent help in your dms! :D")
-                    .then(msgs=>
-                    {
-                    msgs.react(":ballot_box_with_check:");
-                    });
 					message.author.send(embed);
 					args[0] = null;
                     break;

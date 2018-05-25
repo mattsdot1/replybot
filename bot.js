@@ -163,8 +163,8 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("Replying! | ?help");
-	bot.user.setStatus('idle')
+	bot.user.setActivity("with ?help ¯\_(ツ)_/¯");
+	bot.user.setStatus('dnd')
 	});
 
 

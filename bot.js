@@ -189,7 +189,7 @@ bot.on("message", function (message)
             if(err)
             console.error(err);
         } );
-        }
+	{
 
 		if(message.author.equals(bot.user)) return;
 		

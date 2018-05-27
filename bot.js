@@ -113,7 +113,6 @@ var memelist = [
  "http://images.memes.com/meme/21111.jpg",
  "http://images.memes.com/meme/2111.jpg",
  "http://images.memes.com/meme/1.jpg",
- "http://images.memes.com/meme/10211.jpg",
  "http://images.memes.com/meme/10221.jpg",
  "http://images.memes.com/meme/12222.jpg",
  "http://images.memes.com/meme/22222.jpg",
@@ -293,7 +292,7 @@ bot.on("message", function (message)
 				
 				case "help":
 					var embed = new Discord.RichEmbed();
-					embed.setColor("RED");
+					embed.setColor("GREEN");
 					embed.addField("Prefix", "'?'\n\n");
 					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");

@@ -179,15 +179,17 @@ bot.on("message", function (message)
 		let members = message.mentions.members;
 		if(members != null){men = members.first();}
 		const msg = message.content.toLowerCase();
-		if(!cooldowns[message.guild.id])
-        {
+		if(!message.guild == null){ 
+		if(!cooldowns[message.guild.id]){
+			//code
+			}
+		}	
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;
 		fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
             if(err)
             console.error(err);
         } );
-        }
 
 		if(message.author.equals(bot.user)) return;
 		

@@ -182,14 +182,14 @@ bot.on("message", function (message)
 		if(!cooldowns[message.guild.id]){
 			//code
 		}
-		{
+	}
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;
 		fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
             if(err)
             console.error(err);
         } );
-}
+});
 
 		if(message.author.equals(bot.user)) return;
 		

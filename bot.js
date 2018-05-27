@@ -163,7 +163,7 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("with ?help 🤩");
+	bot.user.setActivity("with ?help :P");
 	bot.user.setStatus('dnd')
 	});
 
@@ -179,11 +179,8 @@ bot.on("message", function (message)
 		let members = message.mentions.members;
 		if(members != null){men = members.first();}
 		const msg = message.content.toLowerCase();
-	if(!message.guild == null){ 
 		if(!cooldowns[message.guild.id])
-			//code
-		{
-	}
+        {
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;
 		fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
@@ -212,6 +209,7 @@ bot.on("message", function (message)
             {
                 message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
             }
+            // to this line if u don't want to send any message when the timer hasn't cooled down
 		}
 		if(msg.startsWith("sup"))
 		{
@@ -295,7 +293,7 @@ bot.on("message", function (message)
 				
 				case "help":
 					var embed = new Discord.RichEmbed();
-					embed.setColor("GREEN");
+					embed.setColor("RED");
 					embed.addField("Prefix", "'?'\n\n");
 					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");

@@ -163,8 +163,8 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("Replying! | ?help");
-	bot.user.setStatus('idle')
+	bot.user.setActivity("with ?help 🤩");
+	bot.user.setStatus('dnd')
 	});
 
 
@@ -296,7 +296,7 @@ bot.on("message", function (message)
 				
 				case "help":
 					var embed = new Discord.RichEmbed();
-					embed.setColor("RED");
+					embed.setColor("GREEN");
 					embed.addField("Prefix", "'?'\n\n");
 					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");

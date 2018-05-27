@@ -212,7 +212,6 @@ bot.on("message", function (message)
             {
                 message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
             }
-            // to this line if u don't want to send any message when the timer hasn't cooled down
 		}
 		if(msg.startsWith("sup"))
 		{

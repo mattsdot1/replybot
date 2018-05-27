@@ -33,12 +33,15 @@ var skippers = [];
 
 var hellorep = [
  "Hello there, ",
- "How You Doin'? ",
+ "How You Doin' ",
  "Wassuppppp ",
  "Hi, ",
  "Hello, ",
  "Hey, ",
- "Yo, "];
+ "Suuuuup, ",
+ "Evening, ",
+ "Good day to you, ",
+ "Wattup, "];
 
 var balls = [
     "***Yes!***",
@@ -59,8 +62,11 @@ var balls = [
   ":wave:, ",
   "Goodbye ",
   "Good Goodbye ",
-  "R.I.P. "];
-
+  "R.I.P. ",
+  "It was nice seeing you, ",
+  "Bai, ",
+  "Cya later, "];
+  
   var wasuprep = [
 	  "Fine, How bout you???",
 	  "I 'm good, Thank You!",
@@ -163,7 +169,7 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("with ?help :P");
+	bot.user.setActivity("with ?help 😜");
 	bot.user.setStatus('dnd')
 	});
 
@@ -176,6 +182,7 @@ function randomeme()
 
 bot.on("message", function (message)
 	{
+		if(message.channel.type === 'dm') return
 		let members = message.mentions.members;
 		if(members != null){men = members.first();}
 		const msg = message.content.toLowerCase();

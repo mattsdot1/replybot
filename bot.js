@@ -182,7 +182,7 @@ bot.on("message", function (message)
 	if(!message.guild == null){ 
 		if(!cooldowns[message.guild.id])
 			//code
-		}
+		{
 	}
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;

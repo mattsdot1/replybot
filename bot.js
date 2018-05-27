@@ -690,7 +690,7 @@ bot.on("message", function (message)
 			
 		}
 		
-});
+}
 /*
 function isYt(str)
 {return str.toLowerCase().indexOf("youtube.com") > -1;}

@@ -113,6 +113,7 @@ var memelist = [
  "http://images.memes.com/meme/21111.jpg",
  "http://images.memes.com/meme/2111.jpg",
  "http://images.memes.com/meme/1.jpg",
+ "http://images.memes.com/meme/10211.jpg",
  "http://images.memes.com/meme/10221.jpg",
  "http://images.memes.com/meme/12222.jpg",
  "http://images.memes.com/meme/22222.jpg",
@@ -162,8 +163,8 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("with ?help 🤩");
-	bot.user.setStatus('dnd')
+	bot.user.setActivity("Replying! | ?help");
+	bot.user.setStatus('idle')
 	});
 
 
@@ -178,14 +179,18 @@ bot.on("message", function (message)
 		let members = message.mentions.members;
 		if(members != null){men = members.first();}
 		const msg = message.content.toLowerCase();
-		if(!cooldowns[message.guild.id]){
+	if(!message.guild == null){ 
+		if(!cooldowns[message.guild.id])
+			//code
+		}
+	}
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;
 		fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
             if(err)
             console.error(err);
         } );
-});
+        }
 
 		if(message.author.equals(bot.user)) return;
 		
@@ -204,9 +209,9 @@ bot.on("message", function (message)
             }
             // delete from this line
             else
-            
-               	message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
-	    
+            {
+                message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
+            }
             // to this line if u don't want to send any message when the timer hasn't cooled down
 		}
 		if(msg.startsWith("sup"))
@@ -291,14 +296,14 @@ bot.on("message", function (message)
 				
 				case "help":
 					var embed = new Discord.RichEmbed();
-					embed.setColor("GREEN");
+					embed.setColor("RED");
 					embed.addField("Prefix", "'?'\n\n");
 					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
 					embed.addField("Role Management", "Add Role => Usage:-\n?addrole @member role \n\n Remove Role => Usage:-\n?remrole @member role\n\n Set Joining Role => Usage:-\n?defrole [rolename].\n\n");
 					embed.addField("Moderation","Kick => Usage: -\n?kick @member [reason]\n\nBan => Usage: -\n?ban @member [reason]\n\nMute => Usage: -\n?mute @member [reason]\n\nUnmute => Usage: -\n?unmute @member [reason].\n\n");
 					embed.addField("Profile","Usage:- ?profile");
-			                embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
+			        embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
 					message.channel.send("I sent help in your dms! :D")
 					message.author.send(embed);
 					args[0] = null;
@@ -686,7 +691,7 @@ bot.on("message", function (message)
 			
 		}
 		
-}
+});
 /*
 function isYt(str)
 {return str.toLowerCase().indexOf("youtube.com") > -1;}

@@ -345,7 +345,7 @@ bot.on("message", function (message)
 					{
 						say = false;
 						message.channel.send("The say command has been disabled!").then(msg=>{msg.delete(3000)});
-						mesaage.delete();
+						message.delete();
 					}
 				break;
 

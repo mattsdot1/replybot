@@ -336,7 +336,7 @@ bot.on("message", function (message)
 					{
 						say = true;
 						message.channel.send("The say command has been enabled!").then(msg=>{msg.delete(3000)});
-						mesaage.delete();
+						message.delete();
 					}
 				break;
 				

@@ -156,8 +156,8 @@ bot.on("guildMemberAdd", function (member){
 
 bot.on("ready", function (){
 	console.log("Mattify Reply is ready!");
-	bot.user.setActivity("with ?help 😎");
 	bot.user.setStatus('dnd')
+	bot.user.setPresence({ game: { name: '?help😎', type 2 } });
 	});
 
 

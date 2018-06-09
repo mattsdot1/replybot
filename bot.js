@@ -274,7 +274,7 @@ bot.on("message", function (message)
 					bot.user.setActivity(`${bot.user.presence.game.name}`, {type: `${tbh}`});
       					message.react("\u2705")
 					break;
-			
+					
 				case "No U":
 					message.channel.send("**NO U**");
 					args[0] = null;

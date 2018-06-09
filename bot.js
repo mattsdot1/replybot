@@ -267,16 +267,13 @@ bot.on("message", function (message)
 					break;
 					
 				case "setactivity":
-				if(message.author.id === "303683211790254080") {
-				bot.user.setActivity(`${bot.user.presence.game.name}`, {type: `${tbh}`});
-      				message.react("\u2705")
-				} else if(message.author.id === "245877990938902529") {
-				bot.user.setActivity(`${bot.user.presence.game.name}`, {type: `${tbh}`});
-      				message.react("\u2705")
-    				}
-
-				}
-				break;
+					if(message.author.id === "303683211790254080") {
+					bot.user.setActivity(`${bot.user.presence.game.name}`, {type: `${tbh}`});
+      					message.react("\u2705")
+					} else if(message.author.id === "245877990938902529") {
+					bot.user.setActivity(`${bot.user.presence.game.name}`, {type: `${tbh}`});
+      					message.react("\u2705")
+					break;
 			
 				case "No U":
 					message.channel.send("**NO U**");

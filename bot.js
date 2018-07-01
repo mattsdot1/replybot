@@ -304,7 +304,7 @@ bot.on("message", function (message)
                             if(args[2])
                             {
                                 var blabla = "";
-                                for(i = 2;i<args.length;i++)
+                                for(var i = 2;i<args.length;i++)
                                     blabla = args[i] + " ";
                                 message.mentions.members.first().send(blabla).catch(console.error)
                             }

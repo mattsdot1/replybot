@@ -315,7 +315,7 @@ bot.on("message", function (message)
                         }
                         else
                         {
-                            mmessage.channel.send("Looks like you didn't specify the person you want me to DM");
+                            message.channel.send("Looks like you didn't specify the person you want me to DM");
                         }
                     }
                     else

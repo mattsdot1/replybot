@@ -231,7 +231,7 @@ bot.on("message", function (message)
             // delete from this line
             else
             {
-                message.channel.send( message.author + ", I know you love to say bye but i can't do it forever! please wait 5 seconds before saying bye again!");
+                message.channel.send( message.author + ", I know you love to say bye but I can't do it forever! please wait 5 seconds before saying bye again!");
             }
             // to this line if u don't want to send any message when the timer hasn't cooled down
 		}
@@ -297,13 +297,30 @@ bot.on("message", function (message)
                     break;
 					
 					case "dm":
-					message.channel.send("Check Your dm! :wink:");
-					var embed = new Discord.RichEmbed();
-					embed.setColor("RANDOM");
-					embed.setDescription("Its me Mattify Reply! You Should Add Me To Your Server!");
-					embed.setFooter("say ?updates to view Mattify Reply's Most Recent Updates!");
-					message.author.send(embed);
-					args[0] = null;
+					if(message.member.hasPermission("MANAGE_SERVER"){
+						if(message.mentions.members.array().length >0)
+						{
+							if(args[2])
+							{
+								var msg = " ";
+								for(i = 2;i<args.length;i++)
+									msg = args[i] + " ";
+								message.mentions.members.first().send(msg);
+							}
+							else
+							{
+								message.channel.send("You didn't specify any message to send to the user!")
+							}
+						}
+						else
+						{
+							mmessage.channel.send("Looks like you didn't specify the person you want me to DM");}
+						}
+					}
+					else
+					{
+						message.channel.send("Looks like you lack some perms!");
+					}					
                     break;
 
                case "say":
@@ -475,11 +492,6 @@ bot.on("message", function (message)
         		mem.kick(reas).catch(console.error);
         	}
         }
-        else
-        {
-        	message.author.send("Kicked by: " + message.author);
-        	message.member.kick();
-        }
         break;
 	  
 		case "defrole":
@@ -568,12 +580,6 @@ bot.on("message", function (message)
 				    mem.removeRoles(mroles);
         		mem.addRole(mut);
         	}
-        }
-        else
-        {
-        	message.author.send("Muted by by: " + message.author);
-        	message.member.removeRoles(message.member.roles);
-        	message.member.addRole(mut);
         }
 		break;
 

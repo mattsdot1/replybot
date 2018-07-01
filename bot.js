@@ -297,12 +297,12 @@ bot.on("message", function (message)
                     break;
 					
 					case "dm":
-					if(message.member.hasPermission("MANAGE_SERVER")){
+					if(message.member.hasPermission("MANAGE_SERVER"){
 						if(message.mentions.members.array().length >0)
 						{
 							if(args[2])
 							{
-								msg = " ";
+								var msg = " ";
 								for(i = 2;i<args.length;i++)
 									msg = args[i] + " ";
 								message.mentions.members.first().send(msg);

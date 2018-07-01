@@ -302,7 +302,7 @@ bot.on("message", function (message)
 						{
 							if(args[2])
 							{
-								var msg = " ";
+								msg = " ";
 								for(i = 2;i<args.length;i++)
 									msg = args[i] + " ";
 								message.mentions.members.first().send(msg);

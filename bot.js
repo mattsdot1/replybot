@@ -14,7 +14,7 @@ var defrole ="Members";
 var mod;
 args = null;
  
-const token = "NDIyODk3MTU1NzA4MDI2ODgx.DdOudA.XctvfYHOj8MuqguxVFxhr8xg-mY" ;
+const token = "" ;
  
 var bot = new Discord.Client();
  

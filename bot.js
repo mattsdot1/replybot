@@ -2,22 +2,22 @@ const Discord = require("discord.js");
 const fs = require("fs");
 let cooldowns = JSON.parse(fs.readFileSync('cooldown.json','utf-8'));
 let cdlimit = 5000;
-
+ 
 var say = true;
-
+ 
 const prefix = "?";
-
+ 
 var args;
 var men;
 var sname = "";
 var defrole ="Members";
 var mod;
 args = null;
-
+ 
 const token = "NDIyODk3MTU1NzA4MDI2ODgx.DdOudA.XctvfYHOj8MuqguxVFxhr8xg-mY" ;
-
+ 
 var bot = new Discord.Client();
-
+ 
 var hellorep = [
  "Hello there, ",
  "How You Doin' ",
@@ -29,7 +29,7 @@ var hellorep = [
  "Evening, ",
  "Good day to you, ",
  "Wattup, "];
-
+ 
 var balls = [
     "***Yes!***",
     "**No Way!**",
@@ -37,12 +37,12 @@ var balls = [
     "**Are you Serious?**",
     "*Probably...*",
     "*I don't think so...*",
-	"**OF COURSE**",
-	"**TBH, I have no clue**",
-	"**Hell Yea!**",
-	"**Heck To The No**"
+    "**OF COURSE**",
+    "**TBH, I have no clue**",
+    "**Hell Yea!**",
+    "**Heck To The No**"
 ];
-
+ 
  var byerep = [
   "Bye, ",
   "Cya, ",
@@ -53,13 +53,13 @@ var balls = [
   "It was nice seeing you, ",
   "Bai, ",
   "Cya later, "];
-  
+ 
   var wasuprep = [
-	  "Fine, How bout you???",
-	  "I 'm good, Thank You!",
-	  "Waaaazzzzuuuuupppp!",
+      "Fine, How bout you???",
+      "I 'm good, Thank You!",
+      "Waaaazzzzuuuuupppp!",
   ];
-
+ 
 var memelist = [
  " http://i0.kym-cdn.com/photos/images/original/001/327/454/63b.jpg",
  " http://i0.kym-cdn.com/photos/images/original/001/346/356/d7a.png",
@@ -144,51 +144,51 @@ var memelist = [
  "http://images.memes.com/meme/11251.jpg",
  "http://images.memes.com/meme/11418.jpg"
 ];
-
+ 
 bot.on("guildMemberAdd", function (member){
-	member.send("Welcome to The Server! I am Mattify Reply, Created by Mattify#7243! You can say ?help to view all of my amazing and fun commands! More are being added! Oh, and Please Make Sure To Read the " + member.guild.channels.find("name","rules") + " and enjoy your stay here and don't forget to invite friends! :wink:");
-	let rol = member.guild.roles.find("name",defrole);
-	if(rol){
-	member.addRoles(rol);
-	}
+    member.send("Welcome to The Server! I am Mattify Reply, Created by Mattify#7243! You can say ?help to view all of my amazing and fun commands! More are being added! Oh, and Please Make Sure To Read the " + member.guild.channels.find("name","rules") + " and enjoy your stay here and don't forget to invite friends! :wink:");
+    let rol = member.guild.roles.find("name",defrole);
+    if(rol){
+    member.addRoles(rol);
+    }
 });
-
-
+ 
+ 
 bot.on("ready", function (){
-	console.log("Mattify Reply is ready!");
-	bot.user.setStatus('dnd')
-	bot.user.setPresence({ game: { name: '?help😎', type: 2 } });
-	});
-
-
+    console.log("Mattify Reply is ready!");
+    bot.user.setStatus('dnd')
+    bot.user.setPresence({ game: { name: '?help😎', type: 2 } });
+    });
+ 
+ 
 function randomeme()
 {
-	var meme = memelist[Math.floor(Math.random() * memelist.length)];
-	return meme;
+    var meme = memelist[Math.floor(Math.random() * memelist.length)];
+    return meme;
 }
-
+ 
 bot.on("message", function (message)
-	{
-		if(message.channel.type === 'dm') return
-		let members = message.mentions.members;
-		if(members != null){men = members.first();}
-		const msg = message.content.toLowerCase();
-		if(!cooldowns[message.guild.id]){
-			}
-			
+    {
+        if(message.channel.type === 'dm') return
+        let members = message.mentions.members;
+        if(members != null){men = members.first();}
+        const msg = message.content.toLowerCase();
+        if(!cooldowns[message.guild.id]){
+            }
+           
         cooldowns[message.guild.id] ={};
         cooldowns[message.guild.id].cd = 0;
-		fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
+        fs.writeFile('cooldown.json', JSON.stringify(cooldowns), (err)=> {
             if(err)
             console.error(err);
         } );
-
-		if(message.author.equals(bot.user)) return;
-		
-		
-		if(msg == "hi" || msg == "hello" || msg == "yo" || msg.startsWith("hello ") || msg.startsWith("hi ") || msg==bot.user || msg.startsWith("hey") || msg.startsWith("helo") || msg.startsWith("yo ") && message.author != bot.user)
-		{
-			let cdtime = cooldowns[message.guild.id].cd;
+ 
+        if(message.author.equals(bot.user)) return;
+       
+       
+        if(msg == "hi" || msg == "hello" || msg == "yo" || msg.startsWith("hello ") || msg.startsWith("hi ") || msg==bot.user || msg.startsWith("hey") || msg.startsWith("helo") || msg.startsWith("yo ") && message.author != bot.user)
+        {
+            let cdtime = cooldowns[message.guild.id].cd;
             if(Date.now() > parseInt(cdtime))
             {
                 message.channel.send(hellorep[Math.floor(Math.random() * hellorep.length)] + message.member.user.username + "!");
@@ -205,19 +205,19 @@ bot.on("message", function (message)
                 message.channel.send( message.author + ", I know you love to say hello to me, but i can't do it forever! Please wait 5 seconds before saying hi again!");
             }
             // to this line if u don't want to send any message when the timer hasn't cooled down
-		}
-		if(msg.startsWith("sup"))
-		{
-		message.channel.send("Sup, dude!");
-		}
-			if(msg.startsWith("wassup") || msg.startsWith("wasup") || msg.startsWith("What's up"))
-		{
-			message.channel.send(wasuprep[Math.floor(Math.random() * wasuprep.length)]);
-		}
-		
-		if(msg.startsWith("bye") || msg.startsWith("goodbye") || msg.startsWith(":wave:") || msg.startsWith("cya"))
-		{
-			 let cdtime = cooldowns[message.guild.id].cd;
+        }
+        if(msg.startsWith("sup"))
+        {
+        message.channel.send("Sup, dude!");
+        }
+            if(msg.startsWith("wassup") || msg.startsWith("wasup") || msg.startsWith("What's up"))
+        {
+            message.channel.send(wasuprep[Math.floor(Math.random() * wasuprep.length)]);
+        }
+       
+        if(msg.startsWith("bye") || msg.startsWith("goodbye") || msg.startsWith(":wave:") || msg.startsWith("cya"))
+        {
+             let cdtime = cooldowns[message.guild.id].cd;
             if(Date.now() > parseInt(cdtime))
             {
                 message.channel.send(byerep[Math.floor(Math.random() * byerep.length)] + message.member.user.username + "!");
@@ -234,135 +234,136 @@ bot.on("message", function (message)
                 message.channel.send( message.author + ", I know you love to say bye but I can't do it forever! please wait 5 seconds before saying bye again!");
             }
             // to this line if u don't want to send any message when the timer hasn't cooled down
-		}
-
-		if(msg.startsWith("http"))
-		{
-			message.delete();
-		}
-		
-		if(msg.startsWith(prefix))
-		{
-			args = message.content.substring(prefix.length).split(" ");
-		}
-		else{return; }
-		arg = args[0].toString().toLowerCase();
-		if(arg != null)
-		{
-			switch (args[0]) {
-			
-				case "test":
-					message.channel.send(message.author + ", Mattify Reply has been tested!" );
-					args[0] = null;
-					break;
-				
-				case "info":
-					message.channel.send("Created by: @HS#1624 Improved by Mattify#7243");
-					args[0] = null;
-					break;
-					
-			    case "invite":
-					message.channel.send("Invite The Bot Here! https://discordapp.com/api/oauth2/authorize?client_id=422897155708026881&permissions=8&scope=bot");
-					args[0] = null;
-					break;
-					
-				case "No U":
-					message.channel.send("**NO U**");
-					args[0] = null;
-					break;
-					
-				case "No u":
-					message.channel.send("**NO U**");
-					args[0] = null;
-					break;
-					
-			    case "site":
-					message.channel.send("Check out Mattify Reply's Website! [**Beta**] http://mattifyreply.my-free.website");
-					args[0] = null;
-					break;
-				
-				case "help":
-					var embed = new Discord.RichEmbed();
-					embed.setColor("RED");
-					embed.addField("Prefix", "'?'\n\n");
-					embed.setFooter("Full Of Fun! More Updates Coming Soon!");
-					embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
-					embed.addField("Role Management", "Add Role => Usage:-\n?addrole @member role \n\n Remove Role => Usage:-\n?remrole @member role\n\n Set Joining Role => Usage:-\n?defrole [rolename].\n\n");
-					embed.addField("Moderation","Kick => Usage: -\n?kick @member [reason]\n\nBan => Usage: -\n?ban @member [reason]\n\nMute => Usage: -\n?mute @member [reason]\n\nUnmute => Usage: -\n?unmute @member [reason].\n\n");
-					embed.addField("Profile","Usage:- ?profile");
-			        embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
-					message.channel.send("I sent help in your dms! :D")
-					message.author.send(embed);
-					args[0] = null;
+        }
+ 
+        if(msg.startsWith("http"))
+        {
+            message.delete();
+        }
+       
+        if(msg.startsWith(prefix))
+        {
+            args = message.content.substring(prefix.length).split(" ");
+        }
+        else{return; }
+        arg = args[0].toString().toLowerCase();
+        if(arg != null)
+        {
+            switch (args[0]) {
+           
+                case "test":
+                    message.channel.send(message.author + ", Mattify Reply has been tested!" );
+                    args[0] = null;
                     break;
-					
-					case "dm":
-					if(message.member.hasPermission("MANAGE_SERVER")){
-						if(message.mentions.members.array().length >0)
-						{
-							if(args[2])
-							{
-								var msg = " ";
-								for(i = 2;i<args.length;i++)
-									msg = args[i] + " ";
-								message.mentions.members.first().send(msg);
-							}
-							else
-							{
-								message.channel.send("You didn't specify any message to send to the user!")
-							}
-						}
-						else
-						{
-							mmessage.channel.send("Looks like you didn't specify the person you want me to DM");}
-						}
-					}
-					else
-					{
-						message.channel.send("Looks like you lack some perms!");
-					}					
+               
+                case "info":
+                    message.channel.send("Created by: @HS#1624 Improved by Mattify#7243");
+                    args[0] = null;
                     break;
-
+                   
+                case "invite":
+                    message.channel.send("Invite The Bot Here! https://discordapp.com/api/oauth2/authorize?client_id=422897155708026881&permissions=8&scope=bot");
+                    args[0] = null;
+                    break;
+                   
+                case "No U":
+                    message.channel.send("**NO U**");
+                    args[0] = null;
+                    break;
+                   
+                case "No u":
+                    message.channel.send("**NO U**");
+                    args[0] = null;
+                    break;
+                   
+                case "site":
+                    message.channel.send("Check out Mattify Reply's Website! [**Beta**] http://mattifyreply.my-free.website");
+                    args[0] = null;
+                    break;
+               
+                case "help":
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("RED");
+                    embed.addField("Prefix", "'?'\n\n");
+                    embed.setFooter("Full Of Fun! More Updates Coming Soon!");
+                    embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
+                    embed.addField("Role Management", "Add Role => Usage:-\n?addrole @member role \n\n Remove Role => Usage:-\n?remrole @member role\n\n Set Joining Role => Usage:-\n?defrole [rolename].\n\n");
+                    embed.addField("Moderation","Kick => Usage: -\n?kick @member [reason]\n\nBan => Usage: -\n?ban @member [reason]\n\nMute => Usage: -\n?mute @member [reason]\n\nUnmute => Usage: -\n?unmute @member [reason].\n\n");
+                    embed.addField("Profile","Usage:- ?profile");
+                    embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?RPS (rock, Paper, Scissors).\n");
+                    message.channel.send("I sent help in your dms! :D")
+                    message.author.send(embed);
+                    args[0] = null;
+                    break;
+                   
+                    case "dm":
+                    if(message.member.hasPermission("MANAGE_SERVER"))
+                    {
+                        if(message.mentions.members.array().length > 0)
+                        {
+                            if(args[2])
+                            {
+                                msg = " ";
+                                for(i = 2;i<args.length;i++)
+                                    msg = args[i] + " ";
+                                message.mentions.members.first().send(msg);
+                            }
+                            else
+                            {
+                                message.channel.send("You didn't specify any message to send to the user!")
+                            }
+                        }
+                        else
+                        {
+                            mmessage.channel.send("Looks like you didn't specify the person you want me to DM");
+                        }
+                    }
+                    else
+                    {
+                        message.channel.send("Looks like you lack some perms!");
+                    }                  
+                    break;
+ 
                case "say":
                     if (args[1] == null)
                         message.channel.send("Hmmmm.... What should  I say???");
                     else
                     {
-						if(say == true)
-						{		
-                        	var cot="";
-                        	var a = 1;
-                        	while (args[a] != null) { cot += args[a] + " "; a++; }
-							message.channel.send("" + cot + "");
-						}
-						else
-						{
-							message.channel.send("The say command is currently disabled").then(msgs=>{msgs.delete(3000)});
-						}
+                        if(say == true)
+                        {      
+                            var cot="";
+                            var a = 1;
+                            while (args[a] != null) { cot += args[a] + " "; a++; }
+                            message.channel.send("" + cot + "");
+                        }
+                        else
+                        {
+                            message.channel.send("The say command is currently disabled").then(msgs=>{msgs.delete(3000)});
+                        }
                     }
                     message.delete();
                 break;
-					
-				case "open":
-					if(message.member.id == "303683211790254080")
-					{
-						say = true;
-						message.channel.send("The say command has been enabled!").then(msg=>{msg.delete(3000)});
-						message.delete();
-					}
-				break;
-				
-				case "close":
-					if(message.member.id == "303683211790254080")
-					{
-						say = false;
-						message.channel.send("The say command has been disabled!").then(msg=>{msg.delete(3000)});
-						message.delete();
-					}
-				break;
-
-				case "purge":
-				  if(message.member.permissions.has("MANAGE_MESSAGES")){
+                   
+                case "open":
+                    if(message.member.id == "303683211790254080")
+                    {
+                        say = true;
+                        message.channel.send("The say command has been enabled!").then(msg=>{msg.delete(3000)});
+                        message.delete();
+                    }
+                break;
+               
+                case "close":
+                    if(message.member.id == "303683211790254080")
+                    {
+                        say = false;
+                        message.channel.send("The say command has been disabled!").then(msg=>{msg.delete(3000)});
+                        message.delete();
+                    }
+                break;
+ 
+                case "purge":
+                  if(message.member.permissions.has("MANAGE_MESSAGES")){
                      if(args[1] != null)
                     {
                         let nom = parseInt(args[1]);
@@ -381,330 +382,330 @@ bot.on("message", function (message)
                     else
                     {
                         message.channel.send("Please specify a number of messages to be cleared!");
-				  }}
+                  }}
                     break;
-					
-			    // same private channel
-				case "setupdates":
+                   
+                // same private channel
+                case "setupdates":
                 var channelDatabase = bot.channels.get("439876708821368832");
                 if (message.author.id === "303683211790254080") channelDatabase.send(args.slice(1).join(" "));
-				   message.delete();
+                   message.delete();
                    break;
-				   
+                   
                 case "8ball":
                     if (args[1] == null)
                         message.channel.send("I am sorry. But, I didn't understand that.");
                     else
                         message.channel.send(balls[Math.floor(Math.random() * balls.length)]);
-
+ 
                     break;
-					
-			    // make a private channel
-				case "updates":
+                   
+                // make a private channel
+                case "updates":
                 var channelDatabase = bot.channels.get("439876708821368832");
                 channelDatabase.fetchMessages({ limit: 1 }).then(messages => {
                 const updateEmbed = new Discord.RichEmbed().setColor("RANDOM").setTitle("Mattify Reply Updates!").setDescription(messages.first().content);
                 message.channel.send({ embed: updateEmbed }).catch(function() {});
                 });
-				
-				   break;
-				
-				case "addrole":
-				  if(message.member.permissions.has('MANAGE_ROLES')){
-					if(args[2] == null)
-					{
-						message.channel.send("The syntax is ?addrole @user role");
-					}
-					else
-					{ let i = 2;
-						let rolname = "";
-						while(args[i] != null)
-						{rolname = rolname + args[i] +" "; i++;
-						}
-						let rolnam = rolname.substr(0,rolname.length-1);
-						let mem = message.mentions.members.first();
-						let rol = message.guild.roles.find("name",rolnam);
-						if(mem && rol)
-						{mem.addRole(rol).catch(console.error);
-						message.channel.send("*User: " + mem + " has been rewarded the role: " + rolname + "!*")
-						.catch(console.error);
-						}
-						else{message.channel.send("User/Role not found!");}
-					}}
-					else
-					{message.channel.send(" ***You***, **cannot manage roles** " + message.author);}
-					break;
-					
-			   case "clear":
-			     if(message.member.id == "303683211790254080"){
-		       message.channel.messages.deleteAll(); 
+               
+                   break;
+               
+                case "addrole":
+                  if(message.member.permissions.has('MANAGE_ROLES')){
+                    if(args[2] == null)
+                    {
+                        message.channel.send("The syntax is ?addrole @user role");
+                    }
+                    else
+                    { let i = 2;
+                        let rolname = "";
+                        while(args[i] != null)
+                        {rolname = rolname + args[i] +" "; i++;
+                        }
+                        let rolnam = rolname.substr(0,rolname.length-1);
+                        let mem = message.mentions.members.first();
+                        let rol = message.guild.roles.find("name",rolnam);
+                        if(mem && rol)
+                        {mem.addRole(rol).catch(console.error);
+                        message.channel.send("*User: " + mem + " has been rewarded the role: " + rolname + "!*")
+                        .catch(console.error);
+                        }
+                        else{message.channel.send("User/Role not found!");}
+                    }}
+                    else
+                    {message.channel.send(" ***You***, **cannot manage roles** " + message.author);}
+                    break;
+                   
+               case "clear":
+                 if(message.member.id == "303683211790254080"){
+               message.channel.messages.deleteAll();
                }
-		       else
+               else
                {
                message.channel.send("This command can be only used by the owner!");
-		       }
-			   break;
-					
-				 case "remrole":
-				 if(message.member.permissions.has('MANAGE_ROLES')){
-					if(args[2] == null)
-					{
-						message.channel.send("The syntax is ?remrole @user role");
-					}
-					else
-					{
-						let i = 2;
-						let rolname = "";
-						while(args[i] != null)
-						{rolname = rolname + args[i] +" "; i++;
-						}
-						let rolnam = rolname.substr(0,rolname.length-1);
-						let mem = message.mentions.members.first();
-						let rol = message.guild.roles.find("name",rolnam);
-						console.log(mem + rolname);
-						mem.removeRole(rol).catch(console.error);
-						message.channel.send("*User: " + mem + " has been deprived of the role: " + rolname + "!*")
-						.catch(console.error);
-					}}
-					else{
-						message.channel.send("***You***, **cannot manage roles**");
-					}
-					break;
-
+               }
+               break;
+                   
+                 case "remrole":
+                 if(message.member.permissions.has('MANAGE_ROLES')){
+                    if(args[2] == null)
+                    {
+                        message.channel.send("The syntax is ?remrole @user role");
+                    }
+                    else
+                    {
+                        let i = 2;
+                        let rolname = "";
+                        while(args[i] != null)
+                        {rolname = rolname + args[i] +" "; i++;
+                        }
+                        let rolnam = rolname.substr(0,rolname.length-1);
+                        let mem = message.mentions.members.first();
+                        let rol = message.guild.roles.find("name",rolnam);
+                        console.log(mem + rolname);
+                        mem.removeRole(rol).catch(console.error);
+                        message.channel.send("*User: " + mem + " has been deprived of the role: " + rolname + "!*")
+                        .catch(console.error);
+                    }}
+                    else{
+                        message.channel.send("***You***, **cannot manage roles**");
+                    }
+                    break;
+ 
       case "kick":
         if(message.member.permissions.has("KICK_MEMBERS")){
-        	if(args[1] == null)
-        	{message.channel.send("The correct syntax is ?kick @member [reason]."); return;}
-        	else
-        	{
-        		let mem = message.mentions.members.first();
-        		let i = 2;
-        		let reas ="";
-        		while(args[i] != null){
-        			reas = reas + args[i] + " ";
-        			i++;
-        		}
-        		if(reas == "" || reas == " ")
-				{reas = "Nothing special";}
-				message.channel.send("***User " + mem.user.username + " has been kicked by " + message.author + ".***");
-				mem.send("You have been kicked by " + message.member.user.username + " because of " + reas);
-				message.delete();
-        		mem.kick(reas).catch(console.error);
-        	}
+            if(args[1] == null)
+            {message.channel.send("The correct syntax is ?kick @member [reason]."); return;}
+            else
+            {
+                let mem = message.mentions.members.first();
+                let i = 2;
+                let reas ="";
+                while(args[i] != null){
+                    reas = reas + args[i] + " ";
+                    i++;
+                }
+                if(reas == "" || reas == " ")
+                {reas = "Nothing special";}
+                message.channel.send("***User " + mem.user.username + " has been kicked by " + message.author + ".***");
+                mem.send("You have been kicked by " + message.member.user.username + " because of " + reas);
+                message.delete();
+                mem.kick(reas).catch(console.error);
+            }
         }
         break;
-	  
-		case "defrole":
-			if(args[1] == null)
-			{
-				message.channel.send("Please specify a role!\n\nUsage:-\n\n ?defrole [rolename]")
-			}
-			else
-			{
-				let i =1;
-				let rolname = "";
-				while(args[i] != null)
-				{
-					rolname += args[i] + " ";
-					i++;
-				}
-				let rolnam = rolname.substr(0,rolname.length-1)
-				let rol = message.guild.roles.find("name", rolnam);
-				if(rol)
-				{
-					defrole = rol;
-					message.channel.send(rol + " has been set as the default role of new members.");
-				}
-				else{
-					message.channel.send("Role Not Found! (Everything is case sensitive)");
-				}
-			}
-			break;
-			
-			case "RPS":
-			let choice = args[1];
+     
+        case "defrole":
+            if(args[1] == null)
+            {
+                message.channel.send("Please specify a role!\n\nUsage:-\n\n ?defrole [rolename]")
+            }
+            else
+            {
+                let i =1;
+                let rolname = "";
+                while(args[i] != null)
+                {
+                    rolname += args[i] + " ";
+                    i++;
+                }
+                let rolnam = rolname.substr(0,rolname.length-1)
+                let rol = message.guild.roles.find("name", rolnam);
+                if(rol)
+                {
+                    defrole = rol;
+                    message.channel.send(rol + " has been set as the default role of new members.");
+                }
+                else{
+                    message.channel.send("Role Not Found! (Everything is case sensitive)");
+                }
+            }
+            break;
+           
+            case "RPS":
+            let choice = args[1];
             var responses = ["rock", "paper", "scissors"];
             if (!choice) return message.reply("Provide a Choice First!")
             if (!responses.includes(choice.toLowerCase())) return message.reply("Specify one of the following Choices: `rock`, `paper` or `scissors`.");
             var responsesop = ["paper", "scissors", "rock"];
             var randomchoice = Math.floor(Math.random() * responses.length);
             if (choice.toLowerCase() == responses[randomchoice]) return message.reply(`You Chose \`${choice}\`, I chose \`${responses[randomchoice]}\`! It's a Tie!`);
-            if (responsesop.indexOf(choice.toLowerCase()) == randomchoice) return message.reply(`You choice \`${choice}\`, I chose \`${responses[randomchoice]}\`! You WIN!!!!`);
-            if (responsesop.indexOf(choice.toLowerCase()) != randomchoice) return message.reply(`You choice \`${choice}\`, I chose \`${responses[randomchoice]}\`! You LOSE!!!`);
-			break;
-      
-      case "ban":
-        if(message.member.permissions.has("BAN_MEMBERS")){
-        	if(args[1] == null)
-        	{message.channel.send("The correct syntax is ?ban @member [reason]."); return;}
-        	else
-        	{
-        		let mem = message.mentions.members.first();
-        		let i = 2;
-        		let reas ="";
-        		while(args[i] != null){
-        			reas = reas + args[i] + " ";
-        			i++;
-        		}
-        		if(reas == "" || reas == " ")
-        		{reas = "Nothing special";}
-				mem.send("You have been banned by " + message.member.user.username + " because of " + reas);
-				message.channel.send("***User: " + mem.user.username + " has been banned!***");
-				message.delete();
-        		mem.ban(reas).catch(console.error);
-        	}
+           if (responsesop.indexOf(choice.toLowerCase()) == randomchoice) return message.reply(`You choice \`${choice}\`, I chose \`${responses[randomchoice]}\`! You WIN!!!!`);
+           if (responsesop.indexOf(choice.toLowerCase()) != randomchoice) return message.reply(`You choice \`${choice}\`, I chose \`${responses[randomchoice]}\`! You LOSE!!!`);
+            break;
+     
+     case "ban":
+       if(message.member.permissions.has("BAN_MEMBERS")){
+            if(args[1] == null)
+            {message.channel.send("The correct syntax is ?ban @member [reason]."); return;}
+            else
+            {
+                let mem = message.mentions.members.first();
+                let i = 2;
+                let reas ="";
+                while(args[i] != null){
+                    reas = reas + args[i] + " ";
+                    i++;
+                }
+                if(reas == "" || reas == " ")
+                {reas = "Nothing special";}
+                mem.send("You have been banned by " + message.member.user.username + " because of " + reas);
+                message.channel.send("***User: " + mem.user.username + " has been banned!***");
+                message.delete();
+                mem.ban(reas).catch(console.error);
+            }
+       }
+       
+        break;
+ 
+        case "mute":
+       if(message.member.permissions.has("MUTE_MEMBERS")){
+            if(args[1] == null)
+            {message.channel.send("The correct syntax is ?mute @member [reason]."); return;}
+            else
+            {
+                let mut = message.guild.roles.find("name","Muted");
+                let mem = message.mentions.members.first();
+                let mroles = mem.roles;
+                let i = 2;
+                let reas ="";
+                while(args[i] != null){
+                    reas = reas + args[i] + " ";
+                    i++;
+                }
+                if(reas == "" || reas == " ")
+                {reas = "Nothing special";}
+                mem.send("You have been muted by " + message.member.user.username + " because of " + reas);
+                message.channel.send("***User: " + mem.user.username + " has been muted!***");
+                message.delete();
+                    mem.removeRoles(mroles);
+                mem.addRole(mut);
+            }
+       }
+        break;
+ 
+        case "unmute":
+       if(message.member.permissions.has("MUTE_MEMBERS")){
+            if(args[1] == null)
+            {message.channel.send("The correct syntax is ?unmute @member [reason]."); return;}
+            else
+            {
+                let mut = message.guild.roles.find("name","muted");
+                let mem = message.mentions.members.first();
+                let i = 2;
+                let reas ="";
+                while(args[i] != null){
+                    reas = reas + args[i] + " ";
+                    i++;
+                }
+                if(reas == "" || reas == " ")
+                {reas = "Nothing special";}
+                mem.send("You have been unmuted by " + message.member.user.username + " because of " + reas);
+                message.channel.send("***User: " + mem.user.username + " has been unmuted!***");
+                message.delete();
+                mem.removeRole(mut);
+                mem.addRole(message.guild.roles.find("name",defrole));
+            }
         }
-        
-		break;
-
-		case "mute":
-        if(message.member.permissions.has("MUTE_MEMBERS")){
-        	if(args[1] == null)
-        	{message.channel.send("The correct syntax is ?mute @member [reason]."); return;}
-        	else
-        	{
-        		let mut = message.guild.roles.find("name","Muted");
-        		let mem = message.mentions.members.first();
-        		let mroles = mem.roles;
-        		let i = 2;
-        		let reas ="";
-        		while(args[i] != null){
-        			reas = reas + args[i] + " ";
-        			i++;
-        		}
-        		if(reas == "" || reas == " ")
-        		{reas = "Nothing special";}
-				mem.send("You have been muted by " + message.member.user.username + " because of " + reas);
-				message.channel.send("***User: " + mem.user.username + " has been muted!***");
-				message.delete();
-				    mem.removeRoles(mroles);
-        		mem.addRole(mut);
-        	}
-        }
-		break;
-
-		case "unmute":
-        if(message.member.permissions.has("MUTE_MEMBERS")){
-        	if(args[1] == null)
-        	{message.channel.send("The correct syntax is ?unmute @member [reason]."); return;}
-        	else
-        	{
-        		let mut = message.guild.roles.find("name","muted");
-        		let mem = message.mentions.members.first();
-        		let i = 2;
-        		let reas ="";
-        		while(args[i] != null){
-        			reas = reas + args[i] + " ";
-        			i++;
-        		}
-        		if(reas == "" || reas == " ")
-        		{reas = "Nothing special";}
-				mem.send("You have been unmuted by " + message.member.user.username + " because of " + reas);
-				message.channel.send("***User: " + mem.user.username + " has been unmuted!***");
-				message.delete();
-        		mem.removeRole(mut);
-        		mem.addRole(message.guild.roles.find("name",defrole));
-        	}
-		}
-        
-		break;
-		
-        case "count":
-        if(message.member.id == "303683211790254080"){
-        message.channel.send(bot.guilds.array().length);
-		}
-		else
-        {
-        message.channel.send("This command can be only used by the owner!");
-		}
+       
         break;
        
-		case "status":
-			let statmem = message.mentions.members.first();
-			if(statmem) message.channel.send(statmem.user.username + " is " +statmem.presence.status.toUpperCase());
-			else message.channel.send("You are " + message.member.presence.status.toUpperCase());
-		break;
-		
-		case "profile":
-			var mem
-			let promem = message.mentions.members.first();
-			if(promem){mem=promem;}
-			else{mem=message.member;}
-			let owner = mem.roles.find("name","OWNER");
-			let admin = mem.roles.find("name","Administrator");
-			mod = mem.roles.find("name","Moderator");
-			let hon = mem.roles.find("name","HONORED");
-			let act = mem.roles.find("name","Active");
-			var embed = new Discord.RichEmbed();
-			
-			embed.setTitle(mem.user.username + "'s Profile");
-			
-			embed.setThumbnail(mem.user.avatarURL);
-			embed.addField("Name",mem.user.username);
-
-			let rolelist = mem.roles.array();
-			let i=1;
-			let role ="";
-			while(rolelist[i]!= null)
-			{
-				role += rolelist[i] + "\n";
-				i++;
-			}
-
-			embed.addField("Roles", role);
-
-			if(owner)
-			{embed.setFooter("Description: He's the Owner. Even I wouldn't mess!");}
-			else if(admin)
-			{embed.setFooter("Description: this person is an Admin. Don't mention until it's necessary.");}
-			else if(mod)
-			{embed.setFooter("Description: This person is a Moderator. DO NOT MESS!");}
-			else if(hon)
-			{embed.setFooter("Description: This is an Honorable person. DO NOT DISRESPECT!");}
-			else if(act)
-			{embed.setFooter("Description: This person stays active a lot!");}
-			else{embed.setFooter("Description: Just another Member, XD.");}
-
-			embed.setColor('RANDOM');
-			
-			message.channel.send(embed);
-
-			break;
-		case "memes":
-		  var randmeme = randomeme();
-		  var embed = new Discord.RichEmbed();
-		  embed.setColor('RANDOM');
-		  embed.setImage(randmeme);
-		  message.channel.send(embed);
-		break;
-		
-		/*case "play":
-		  if(args[1] == null)
-		  {message.channel.send("Hmmmm... What should I play???");}
-		  else
-		  {
-		  	 let s=1;
-		  	 while(args[s] != null)
-		  	 {sname += args[s] + " ";s++;}
-		  	 if(queue.length > 0 || isPlaying)
-		  	 {
-		  	 	getID(sname, function (id){
-		  	 		add(id);
-		  	 		
-		  	 		});
-		  	 	}
-		  	 sname="";
-		  	}
-		break;*/
-		
-		default:
-			message.channel.send("");
-			args[0] = null;
-			break;
-			}
-			
-		}
-		
+       case "count":
+       if(message.member.id == "303683211790254080"){
+       message.channel.send(bot.guilds.array().length);
+        }
+        else
+       {
+       message.channel.send("This command can be only used by the owner!");
+        }
+       break;
+     
+        case "status":
+            let statmem = message.mentions.members.first();
+            if(statmem) message.channel.send(statmem.user.username + " is " +statmem.presence.status.toUpperCase());
+            else message.channel.send("You are " + message.member.presence.status.toUpperCase());
+        break;
+       
+        case "profile":
+            var mem
+            let promem = message.mentions.members.first();
+            if(promem){mem=promem;}
+            else{mem=message.member;}
+            let owner = mem.roles.find("name","OWNER");
+            let admin = mem.roles.find("name","Administrator");
+            mod = mem.roles.find("name","Moderator");
+            let hon = mem.roles.find("name","HONORED");
+            let act = mem.roles.find("name","Active");
+            var embed = new Discord.RichEmbed();
+           
+            embed.setTitle(mem.user.username + "'s Profile");
+           
+            embed.setThumbnail(mem.user.avatarURL);
+            embed.addField("Name",mem.user.username);
+ 
+            let rolelist = mem.roles.array();
+            let i=1;
+            let role ="";
+            while(rolelist[i]!= null)
+            {
+                role += rolelist[i] + "\n";
+                i++;
+            }
+ 
+            embed.addField("Roles", role);
+ 
+            if(owner)
+            {embed.setFooter("Description: He's the Owner. Even I wouldn't mess!");}
+            else if(admin)
+            {embed.setFooter("Description: this person is an Admin. Don't mention until it's necessary.");}
+            else if(mod)
+            {embed.setFooter("Description: This person is a Moderator. DO NOT MESS!");}
+            else if(hon)
+            {embed.setFooter("Description: This is an Honorable person. DO NOT DISRESPECT!");}
+            else if(act)
+            {embed.setFooter("Description: This person stays active a lot!");}
+            else{embed.setFooter("Description: Just another Member, XD.");}
+ 
+            embed.setColor('RANDOM');
+           
+            message.channel.send(embed);
+ 
+            break;
+        case "memes":
+          var randmeme = randomeme();
+          var embed = new Discord.RichEmbed();
+          embed.setColor('RANDOM');
+          embed.setImage(randmeme);
+          message.channel.send(embed);
+        break;
+       
+        /*case "play":
+          if(args[1] == null)
+          {message.channel.send("Hmmmm... What should I play???");}
+          else
+          {
+             let s=1;
+             while(args[s] != null)
+             {sname += args[s] + " ";s++;}
+             if(queue.length > 0 || isPlaying)
+             {
+                getID(sname, function (id){
+                    add(id);
+                   
+                    });
+                }
+             sname="";
+            }
+        break;*/
+       
+        default:
+            message.channel.send("");
+            args[0] = null;
+            break;
+            }
+           
+        }
+       
 });
-
+ 
 bot.login(token);
